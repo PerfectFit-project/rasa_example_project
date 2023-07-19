@@ -174,7 +174,7 @@ Some errors I got during the setup:
    - When running the project locally on Windows:
       - I got an error for the SQLTrackerStore when running `docker-compose up –-build`. Just removing the information on `volumes` in docker-compose.yml helped. This removes the persistence though.
 	  - Since adding nginx, nginx does not work out of the box. To just quickly get the project to work locally, I ignored the nginx part. So I accessed the frontend via "localhost:3000/?..." and changed the url in the file script.js to `url: "http://localhost:5005/webhooks/rest/webhook",`.
-	
+   - My tables in the mysql database were not created after first trying to create the tables with a wrong statement. The post here helped: https://stackoverflow.com/questions/38504257/mysql-scripts-in-docker-entrypoint-initdb-are-not-executed. So this boiled down to deleting the "data_mysql"-folder.
 		 
 ## Frontend Styling
 
