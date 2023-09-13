@@ -17,7 +17,7 @@ To run this project on a Google Compute Engine, I followed these steps:
 	  - Use Ubuntu 20.04.
 	  - Make sure that the location is in Europe.
 	  - Enable http and https traffic.
-	  - Choose a small instance for the start, since you have to pay more for larger instances. I started with an e2-medium machine type and 100GB for the boot disk.
+	  - Choose a small instance for the start, since you have to pay more for larger instances. I started with an e2-medium machine type and 100GB for the boot disk. For my experiment, I used an e2-highmem machine type with 2 vCPUs and 16GB memory but got a notification from Google that the instance was underutilized.
 	  - The first 3 months you have some free credit.
       - Follow the instructions from [here](https://github.com/AmirStudy/Rasa_Deployment) in the sense that you “allow full access to all cloud APIs” on the Google Compute Engine instance. This is shown in this video: https://www.youtube.com/watch?v=qOHszxJsuGs&ab_channel=JiteshGaikwad. Also see this screenshot:
    
