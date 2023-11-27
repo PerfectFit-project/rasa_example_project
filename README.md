@@ -1,7 +1,7 @@
 # rasa_example_project
 Example for setting up a conversational agent based on Rasa Open Source on a Google Compute Engine instance. The conversational agent in this example interacts with people in 5 conversational sessions.
 
-Based on this Github repository (https://github.com/AmirStudy/Rasa_Deployment) as well as the work by Tom Jacobs (https://github.com/TomJ-EU/rasa/tree/dev).
+Based on [this Github repository](https://github.com/AmirStudy/Rasa_Deployment) as well as the [work by Tom Jacobs](https://github.com/TomJ-EU/rasa/tree/dev).
 
 
 ## Components
