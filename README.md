@@ -127,6 +127,7 @@ To run this project on a Google Compute Engine, I followed these steps:
 	    ```
 
 This project uses an SQLTrackerStore (https://rasa.com/docs/rasa/tracker-stores/) to store the conversation history in a database:
+   - Make sure to change the default password both in `docker-compose.yml` and in `backend/endpoints.yml`.
    - A nice way to see the contents of this database is using the program DBeaver.
       - First also open port 5432 on your Google Compute Engine instance for tcp. There is no need to restart the instance after opening the port.
       - To configure DBeaver, add a new database connection:
