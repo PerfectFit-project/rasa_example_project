@@ -38,7 +38,7 @@ To run this project on a Google Compute Engine, I followed these steps:
    - Follow the instructions from [here](https://github.com/AmirStudy/Rasa_Deployment) for installing Docker on the Google Compute Engine instance. You can do this via the command line that opens after you click on "SSH":
    
    <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
-	
+
    - Install docker-compose on the instance:
 	  - I followed the steps described [here](https://levelup.gitconnected.com/the-easiest-docker-docker-compose-setup-on-compute-engine-ec171c09a29a):
 	     - `curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
@@ -67,7 +67,7 @@ To run this project on a Google Compute Engine, I followed these steps:
    
    <img src = "Readme_images/chat.PNG" width = "500" title="Chat.">
    
-   - Right now I have set the code in frontend/static/css/style.css such that the chat is always opened in fullscreen. See this code:
+   - Right now I have set the code in `frontend/static/css/style.css` such that the chat is always opened in fullscreen. See this code:
      
 	 ```css
 	 .widget {
@@ -81,9 +81,9 @@ To run this project on a Google Compute Engine, I followed these steps:
 	 background: #f7f7f7;
 	 border-radius: 10px 10px 10px 10px;
 	 box-shadow: 0px 2px 10px 1px #b5b5b5;
-     }
+         }
 	 ```
-      - The code by Tom Jacobs (https://github.com/TomJ-EU/rasa/tree/dev) instead first opens the chat as a smaller window and adds a "fullscreen"-option to the drop-down used in [the code by Jitesh Gaikwad](https://github.com/AmirStudy/Rasa_Deployment). For example, like this in script.js:
+      - The [code by Tom Jacobs](https://github.com/TomJ-EU/rasa/tree/dev) instead first opens the chat as a smaller window and adds a "fullscreen"-option to the drop-down used in [the code by Jitesh Gaikwad](https://github.com/AmirStudy/Rasa_Deployment). For example, like this in `script.js`:
    
 		```js
 		//fullscreen function to toggle fullscreen.
@@ -127,7 +127,7 @@ To run this project on a Google Compute Engine, I followed these steps:
 	    ```
 
 This project uses an SQLTrackerStore (https://rasa.com/docs/rasa/tracker-stores/) to store the conversation history in a database:
-   - Make sure to change the default password both in `docker-compose.yml` and in `backend/endpoints.yml`.
+   - Make sure to change the default password both in `docker-compose.yml` and in `backend/endpoints.yml`. If your database was already previously up and the "data"-folder hence already exists, just changing the password in `docker-compose.yml` and in `backend/endpoints.yml` will not work. You could just remove the "data"-folder before changing the password then.
    - A nice way to see the contents of this database is using the program DBeaver.
       - First also open port 5432 on your Google Compute Engine instance for tcp. There is no need to restart the instance after opening the port.
       - To configure DBeaver, add a new database connection:
@@ -149,12 +149,12 @@ This project uses an SQLTrackerStore (https://rasa.com/docs/rasa/tracker-stores/
 	  
 	  <img src = "Readme_images/dbeaver_4.PNG" width = "500" title="DBeaver 4.">
 
-   - The database is persistent because of the "volumes" we specified in docker-compose.yml for postgres. Read more about this here: https://medium.com/codex/how-to-persist-and-backup-data-of-a-postgresql-docker-container-9fe269ff4334.
+   - The database is persistent because of the "volumes" we specified in docker-compose.yml for postgres. Read more about this [here](https://medium.com/codex/how-to-persist-and-backup-data-of-a-postgresql-docker-container-9fe269ff4334).
       - So you can run `docker-compose down --volumes` and `docker-compose up --build` and the database content is still there. Check for yourself using DBeaver.
 	  - To delete the database content, just remove the "data"-folder.
 
 
-The project further uses an mysql database to store specific data from the conversations:
+The project further uses an MySQL database to store specific data from the conversations:
    - The database is also persistent. The folder "data_mysql" is used for this, as set up in docker-compose.yml.
    - To inspect the database content content with DBeaver, first open port 3306 on your instance for tcp. Again, there is no need to restart your instance after opening this port.
    - When setting up the connection, use "db" for "Database", "root" for "Username", and the password specified in docker-compose.yml. Keep "Port" to 3306. The "Server Host" is the IP address of your instance.
