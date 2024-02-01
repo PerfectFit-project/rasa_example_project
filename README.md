@@ -424,13 +424,12 @@ You might want to allow also for https traffic:
 ## Other Notes
 - The frontend is not fully cleaned up yet (i.e., still contains quite some components that are not used by this project).
 - The repository by Jitesh Gaikwad (https://github.com/AmirStudy/Rasa_Deployment) also contains code for displaying charts, drop-downs, and images in frontend/static/js/script.js (see the function `setBotResponse` for displaying responses from the rasa bot). I have removed this code in this example project, but if you need to send such kinds of messages, take a look.
-- `"--debug"` in backend/Dockerfile prints a lot of debugging statements (e.g., for the action prediction). This is handy while you are still developing your agent, but can be removed.
+- `"--debug"` in `backend/Dockerfile` prints a lot of debugging statements (e.g., for the action prediction). This is handy while you are still developing your agent, but can be removed.
 - The Developer tools in Google Chrome show the logs from script.js (i.e., the result of `console.log()`)if you access the frontend via Google Chrome.
 - Think carefully about how you deal with timed-out sessions. You may want to customize the `action_session_start`: https://rasa.com/docs/rasa/default-actions#customization.
 - If you have made changes and they do not reflect on your Google Compute Engine instance, check if you have run `docker-compose down --volumes` and `docker-compose up --build`.
-- If you do not see the result of retraining your rasa model, it can sometimes help to delete all models and retrain from scratch. You might want to add `--force` to the training command.
 - You might want to prevent people from typing while the chatbot is still sending more messages. You can adapt the file script.js to allow for this using statements such as `$('.usrInput').attr("disabled",true);` and `$(".usrInput").prop('placeholder', "Wait for Mel's response.");`
-- Before running the chatbot on a Google Compute Engine instance for your experiment, make sure to get a paid account. Once the trial period ends or you have used up your free credit your instance will stop. And a billing account will also help to prevent Google from stopping your project when it thinks that you are mining crypto currencies (e.g., see [here](https://groups.google.com/g/gce-discussion/c/5prZHD3DEnQ)).
+- Before running the chatbot on a Google Compute Engine instance for your experiment, make sure to get a paid account. Once the trial period ends or you have used up your free credit your instance will stop. And a billing account might also help to prevent Google from stopping your project when it thinks that you are mining crypto currencies (e.g., see [here](https://groups.google.com/g/gce-discussion/c/5prZHD3DEnQ)).
 - When using the db, pay attention to closing connections. Also pay attention to the kind of cursor you use when you use fetchone(). It may be good to use a buffered cursor then (e.g., see [here](https://stackoverflow.com/questions/29772337/python-mysql-connector-unread-result-found-when-using-fetchone)).
 - You might want to get more detailed logs for your mysql database. See [here](https://stackoverflow.com/questions/39708213/enable-logging-in-docker-mysql-container) for a useful discussion. 
    - You can add `- ./mysql_log:/var/log/mysql` to your mysql volumes in docker-compose.yml.
@@ -440,9 +439,13 @@ You might want to allow also for https traffic:
    - Now you can see the logs on your Google Compute Engine instance in mysql_log/mysql.log.
 - Viewing Google activity logs: https://cloud.google.com/compute/docs/logging/activity-logs.
 - Listing sessions/active connections on mysql server: https://dataedo.com/kb/query/mysql/list-database-sessions (e.g., can execute a query in DBeaver).
+
+
+### Rasa Model Training
+
 - The project uses Rasa 3.2.8. It is important that the Rasa model is trained in the same version. If you want to use a different Rasa version, make sure to also update this in `backend/Dockerfile` and `actions/Dockerfile`. Changing the Rasa version might also require changes in the way the Rasa training data is specified.
 - I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7.
-
+- If you do not see the result of retraining your rasa model, it can sometimes help to delete all models and retrain from scratch. You might want to add `--force` to the training command.
 
 ## License
 
