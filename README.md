@@ -440,7 +440,7 @@ You might want to allow also for https traffic:
    - Now you can see the logs on your Google Compute Engine instance in mysql_log/mysql.log.
 - Viewing Google activity logs: https://cloud.google.com/compute/docs/logging/activity-logs.
 - Listing sessions/active connections on mysql server: https://dataedo.com/kb/query/mysql/list-database-sessions (e.g., can execute a query in DBeaver).
-- The project uses Rasa 3.2.8. It is important that the Rasa model is trained in the same version. If you want to use a different Rasa version, make sure to also update this in `Backend/Dockerfile` and `actions/Dockerfile`. Changing the Rasa version might also require changes in the way the Rasa training data is specified.
+- The project uses Rasa 3.2.8. It is important that the Rasa model is trained in the same version. If you want to use a different Rasa version, make sure to also update this in `backend/Dockerfile` and `actions/Dockerfile`. Changing the Rasa version might also require changes in the way the Rasa training data is specified.
 - I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7.
 
 
