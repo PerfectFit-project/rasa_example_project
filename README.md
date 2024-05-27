@@ -133,6 +133,8 @@ To run this project on a Google Compute Engine, I followed these steps:
 		//drop down menu
 	    $('.dropdown-trigger').dropdown();
 	    ```
+		
+### SQLTrackerStore for Storing Conversation History
 
 This project uses an [SQLTrackerStore](https://rasa.com/docs/rasa/tracker-stores/) to store the conversation history in a database:
    - Make sure to change the default password both in `docker-compose.yml` and in `backend/endpoints.yml`. If your database was already previously up and the "data"-folder hence already exists, just changing the password in `docker-compose.yml` and in `backend/endpoints.yml` will not work. You could just remove the "data"-folder before changing the password then.
@@ -161,6 +163,7 @@ This project uses an [SQLTrackerStore](https://rasa.com/docs/rasa/tracker-stores
       - So you can run `docker-compose down --volumes` and `docker-compose up --build` and the database content is still there. Check for yourself using DBeaver.
 	  - To delete the database content, just remove the "data"-folder.
 
+### MySQL Database
 
 The project further uses an MySQL database to store specific data from the conversations:
    - The database is also persistent. The folder "data_mysql" is used for this, as set up in docker-compose.yml.
@@ -170,6 +173,7 @@ The project further uses an MySQL database to store specific data from the conve
    - To delete the database content, just delete the folder "data_mysql" on your Google Compute Engine instance.
    - Make sure to use a secure password. This needs to be set in both docker-compose.yml and actions/definitions.py. For example, see [this post](https://www.akamai.com/blog/security/btc-strikes-back-now-attacking-mysql-databases).
 
+### Possible Errors During Setup & How to Fix Them
 
 Some errors I got during the setup:
    - "Couldn't connect to Docker daemon at http+docker://localhost - is it running? If it's at a non-standard location, specify the URL with the DOCKER_HOST environment variable“ when running `docker-compose up –-build`.
