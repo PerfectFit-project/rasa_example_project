@@ -37,7 +37,7 @@ To run this project on a Google Compute Engine, I followed these steps:
    
    - You now need to install Docker and docker-compose on the instance. You can do this via the command line that opens after you click on "SSH":
    
-    <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
+   <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
 
    - Install Docker on the instance:
       - `sudo apt-get update`
