@@ -37,23 +37,23 @@ To run this project on a Google Compute Engine, I followed these steps:
    
    - You now need to install Docker and docker-compose on the instance. You can do this via the command line that opens after you click on "SSH":
    
-   <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
+      <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
 
-   - Install Docker on the instance:
-      - `sudo apt-get update`
-	  - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add`
-	  - `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
-      - `sudo apt-get update`
-	  - `apt-cache policy docker-ce`
-	  - `sudo apt-get install -y docker-ce`
-      - `sudo systemctl status docker`
-   - Install docker-compose on the instance:
-	  - I followed the steps described [here](https://levelup.gitconnected.com/the-easiest-docker-docker-compose-setup-on-compute-engine-ec171c09a29a):
-	     - `curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
-	     - `chmod +x /usr/local/bin/docker-compose`
-	     - You might need to add `sudo` in front of the commands to make them work.
+      - Install Docker on the instance:
+         - `sudo apt-get update`
+	     - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add`
+	     - `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
+         - `sudo apt-get update`
+	     - `apt-cache policy docker-ce`
+	     - `sudo apt-get install -y docker-ce`
+         - `sudo systemctl status docker`
+      - Install docker-compose on the instance:
+	     - I followed the steps described [here](https://levelup.gitconnected.com/the-easiest-docker-docker-compose-setup-on-compute-engine-ec171c09a29a):
+	        - `curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
+	        - `chmod +x /usr/local/bin/docker-compose`
+	        - You might need to add `sudo` in front of the commands to make them work.
    - I suggest getting a static IP address for your Google Compute Engine instance:
-      - Follow the instructions here: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address.
+      - Follow the instructions [here](https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address).
 	  - You have to pay for every month, but it is rather cheap.
    - Make sure you turn off your instance whenever you do not need it, as you are charged for the time that it is up.
    - Create your own version of this example project (e.g., via a fork).
@@ -134,7 +134,7 @@ To run this project on a Google Compute Engine, I followed these steps:
 	    $('.dropdown-trigger').dropdown();
 	    ```
 
-This project uses an SQLTrackerStore (https://rasa.com/docs/rasa/tracker-stores/) to store the conversation history in a database:
+This project uses an [SQLTrackerStore](https://rasa.com/docs/rasa/tracker-stores/) to store the conversation history in a database:
    - Make sure to change the default password both in `docker-compose.yml` and in `backend/endpoints.yml`. If your database was already previously up and the "data"-folder hence already exists, just changing the password in `docker-compose.yml` and in `backend/endpoints.yml` will not work. You could just remove the "data"-folder before changing the password then.
    - A nice way to see the contents of this database is using the program DBeaver.
       - First also open port 5432 on your Google Compute Engine instance for tcp. There is no need to restart the instance after opening the port.
