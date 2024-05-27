@@ -161,7 +161,9 @@ This project uses an [SQLTrackerStore](https://rasa.com/docs/rasa/tracker-stores
 
    - The database is persistent because of the "volumes" we specified in docker-compose.yml for postgres. Read more about this [here](https://medium.com/codex/how-to-persist-and-backup-data-of-a-postgresql-docker-container-9fe269ff4334).
       - So you can run `docker-compose down --volumes` and `docker-compose up --build` and the database content is still there. Check for yourself using DBeaver.
-	  - To delete the database content, just remove the "data"-folder.
+	  - To delete the database content, just remove the "data"-folder on your instance. For example, like this:
+	     - `cd rasa_example_project`
+		 - `sudo rm -r data`
 
 ### MySQL Database
 
