@@ -30,7 +30,7 @@ services:
       restart: always
       environment:
         MYSQL_DATABASE: "db"
-        MYSQL_ROOT_PASSWORD: 'password'
+        MYSQL_ROOT_PASSWORD: 'mysql_pw_tree_blue22'
       ports:
         - "3306:3306"
       volumes:
@@ -41,7 +41,7 @@ services:
       restart: always
       environment:
           POSTGRES_USER: root
-          POSTGRES_PASSWORD: root
+          POSTGRES_PASSWORD: pw_pg_orange_333
       volumes:
        - ./data:/var/lib/postgresql/data
       ports:

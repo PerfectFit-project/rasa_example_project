@@ -34,11 +34,19 @@ To run this project on a Google Compute Engine, I followed these steps:
    <img src = "Readme_images/firewall_rule_2.PNG" width = "250" title="Creating a firewall rule 2.">
    
    <img src = "Readme_images/firewall_rule_3.PNG" width = "250" title="Creating a firewall rule 3.">
-	
-   - Follow the instructions from [here](https://github.com/AmirStudy/Rasa_Deployment) for installing Docker on the Google Compute Engine instance. You can do this via the command line that opens after you click on "SSH":
    
-   <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
+   - You now need to install Docker and docker-compose on the instance. You can do this via the command line that opens after you click on "SSH":
+   
+    <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
 
+   - Install Docker on the instance:
+      - `sudo apt-get update`
+	  - `curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add`
+	  - `sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"`
+      - `sudo apt-get update`
+	  - `apt-cache policy docker-ce`
+	  - `sudo apt-get install -y docker-ce`
+      - `sudo systemctl status docker`
    - Install docker-compose on the instance:
 	  - I followed the steps described [here](https://levelup.gitconnected.com/the-easiest-docker-docker-compose-setup-on-compute-engine-ec171c09a29a):
 	     - `curl -L "https://github.com/docker/compose/releases/download/1.26.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose`
@@ -48,7 +56,6 @@ To run this project on a Google Compute Engine, I followed these steps:
       - Follow the instructions here: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address.
 	  - You have to pay for every month, but it is rather cheap.
    - Make sure you turn off your instance whenever you do not need it, as you are charged for the time that it is up.
-   - Create your own branch/fork from this project.
    - If you are NOT using Nginx, set the IP address of your Google Compute Engine instance in the function `send(message)` in the file frontend/static/js/script.js: `url: "http://<your_instance_IP>:5005/webhooks/rest/webhook"`.
       - When you run the project locally, use `url: "http://localhost:5005/webhooks/rest/webhook"`.
    - Clone your project from Github on the Google Compute Engine instance.
