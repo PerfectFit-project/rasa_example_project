@@ -56,6 +56,7 @@ To run this project on a Google Compute Engine, I followed these steps:
       - Follow the instructions here: https://cloud.google.com/compute/docs/ip-addresses/reserve-static-external-ip-address.
 	  - You have to pay for every month, but it is rather cheap.
    - Make sure you turn off your instance whenever you do not need it, as you are charged for the time that it is up.
+   - Create your own version of this example project (e.g., via a fork).
    - If you are NOT using Nginx, set the IP address of your Google Compute Engine instance in the function `send(message)` in the file frontend/static/js/script.js: `url: "http://<your_instance_IP>:5005/webhooks/rest/webhook"`.
       - When you run the project locally, use `url: "http://localhost:5005/webhooks/rest/webhook"`.
    - Clone your project from Github on the Google Compute Engine instance.
