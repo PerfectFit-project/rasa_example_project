@@ -458,7 +458,7 @@ You might want to allow also for https traffic:
 ### Rasa Model Training
 
 - The project uses Rasa 3.2.8. It is important that the Rasa model is trained in the same version. If you want to use a different Rasa version, make sure to also update this in `backend/Dockerfile` and `actions/Dockerfile`. Changing the Rasa version might also require changes in the way the Rasa training data is specified.
-- I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7. But you can also train the model on the Google Compute Engine instance. For this, you need to install Rasa 3.2.8 on the instance:
+- I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7. But you can also train the model on the Google Compute Engine instance. For this, you need to install Rasa 3.2.8 (or whichever Rasa version your project uses) on the instance:
    - `sudo apt-get update`
    - `sudo apt install python3-pip`
    - `sudo pip install rasa==3.2.8`
