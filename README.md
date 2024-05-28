@@ -458,8 +458,42 @@ You might want to allow also for https traffic:
 ### Rasa Model Training
 
 - The project uses Rasa 3.2.8. It is important that the Rasa model is trained in the same version. If you want to use a different Rasa version, make sure to also update this in `backend/Dockerfile` and `actions/Dockerfile`. Changing the Rasa version might also require changes in the way the Rasa training data is specified.
-- I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7.
-- If you do not see the result of retraining your rasa model, it can sometimes help to delete all models and retrain from scratch. You might want to add `--force` to the training command.
+- I just trained the Rasa model locally in an anaconda environment with Rasa 3.2.8 and Python 3.7. But you can also train the model on the Google Compute Engine instance. For this, you need to install Rasa 3.2.8 on the instance:
+   - `sudo apt-get update`
+   - `sudo apt install python3-pip`
+   - `sudo pip install rasa==3.2.8`
+   - Navigate to the `backend`-folder of the chatbot on the instance (e.g., `cd rasa_example_project/backend`)
+   - Try `rasa train`
+      - I now got this error:
+	  
+	     <img src = "Readme_images/rasa_train_1.png" width = "500" title="Rasa train 1.">
+		 
+      - Solve via `pip install websockets==10.0` (as described [here](https://community.okteto.com/t/importerror-cannot-import-name-closed-from-websockets-connection/770/5))
+	     - I got now this error:
+		 
+		    <img src = "Readme_images/rasa_train_2.png" width = "500" title="Rasa train 2.">
+			
+		 - Solve as described below:
+		 
+		    <img src = "Readme_images/rasa_train_3.png" width = "500" title="Rasa train 3.">
+			
+			- For me this meant running:
+			   - `sudo rm -rf /usr/lib/python3/dist-packages/OpenSSL`
+			   - `pip install pyopenssl --upgrade`
+			   
+      - Now try again to run `pip install websockets==10.0`
+   - Now again navigate to the `backend`-folder of the chatbot on the instance (e.g., `cd rasa_example_project/backend`)
+   - Try running `rasa train` again
+      - I now got this error:
+	  
+	     <img src = "Readme_images/rasa_train_4.png" width = "500" title="Rasa train 4.">
+		 
+	   - I solved this by running `pip install typing_extensions==4.7.1 --upgrade` (as described [here](https://stackoverflow.com/questions/77074676/importerror-cannot-import-name-deprecated-from-typing-extensions))
+   - Try running `rasa train` again from inside the `backend`-folder of the chatbot. It now worked for me:
+   
+      <img src = "Readme_images/rasa_train_5.png" width = "500" title="Rasa train 5.">
+	  
+- If you do not see the result of retraining your rasa model in the dialog, it can sometimes help to delete all models and retrain from scratch. You might want to add `--force` to the training command.
 
 ## License
 
