@@ -468,12 +468,12 @@ You might want to allow also for https traffic:
 	  
 	     <img src = "Readme_images/rasa_train_1.png" width = "500" title="Rasa train 1.">
 		 
-      - Solve via `pip install websockets==10.0` (as described [here](https://community.okteto.com/t/importerror-cannot-import-name-closed-from-websockets-connection/770/5))
-	     - I got now this error:
+      - I solved this via `pip install websockets==10.0` (as described [here](https://community.okteto.com/t/importerror-cannot-import-name-closed-from-websockets-connection/770/5))
+	     - I now got this error:
 		 
 		    <img src = "Readme_images/rasa_train_2.png" width = "500" title="Rasa train 2.">
 			
-		 - Solve as described below:
+		 - I solved this as described below:
 		 
 		    <img src = "Readme_images/rasa_train_3.png" width = "500" title="Rasa train 3.">
 			
