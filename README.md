@@ -35,7 +35,7 @@ To run this project on a Google Compute Engine, I followed these steps:
    
    <img src = "Readme_images/firewall_rule_3.PNG" width = "250" title="Creating a firewall rule 3.">
    
-   - You now need to install Docker and docker-compose on the instance. You can do this via the command line that opens after you click on "SSH":
+   - You now need to install Docker and docker-compose on the instance. You only need to do this once when you first set up your instance. You can do this installation via the command line that opens after you click on "SSH":
    
       <img src = "Readme_images/ssh.PNG" width = "250" title="Connect via SSH.">
 
@@ -57,14 +57,21 @@ To run this project on a Google Compute Engine, I followed these steps:
 	  - You have to pay for every month, but it is rather cheap.
    - Make sure you turn off your instance whenever you do not need it, as you are charged for the time that it is up.
    - Create your own version of this example project (e.g., via a fork).
-   - If you are NOT using Nginx, set the IP address of your Google Compute Engine instance in the function `send(message)` in the file frontend/static/js/script.js: `url: "http://<your_instance_IP>:5005/webhooks/rest/webhook"`.
+   - This example project uses Nginx. If you are NOT using Nginx, set the IP address of your Google Compute Engine instance in the function `send(message)` in the file frontend/static/js/script.js: `url: "http://<your_instance_IP>:5005/webhooks/rest/webhook"`.
       - When you run the project locally, use `url: "http://localhost:5005/webhooks/rest/webhook"`.
    - Clone your project from Github on the Google Compute Engine instance.
-   - Navigate to your project folder on the Compute Engine instance and start your project with `docker-compose up`.
-   - Check if all your containers are running on your Google Compute Engine instance via `docker container ls`.
-   - You can access the frontend from your browser via `http://<your_instance_IP>/?userid=<some_user_id>&n=1`. `n` determines which session is started (1-5). Earlier sessions need to be completed by a user to be able to access later ones.
-      - If you are not using Nginx, you also need to specify the port number: `http://<your_instance_IP>:3000/?userid=<some_user_id>&n=1`.
-	  - And if you are not using Nginx, you also need to open port 3000 on your Google Compute Engine instance for tcp.
+
+### Starting your chatbot on the Google Compute Engine instance
+
+   - Navigate to your project folder on the Compute Engine instance (e.g., `cd rasa_example_project`).
+   - Start your project with `docker-compose up --build` from inside the project folder.
+   - You can check if all your containers are running on your Google Compute Engine instance via `docker container ls`.
+   - You can access the frontend from your browser via `http://<your_instance_IP>/?userid=<some_user_id>&n=1`.
+      - For example, if your instance's IP is 233.23.33.22, you can use the URL `http://233.23.33.22/?userid=Bob22&n=1`.
+      - `n` determines which session is started (1-5). Earlier sessions need to be completed by a user to be able to access later ones.
+	  - This project uses Nginx. If you do NOT use Nginx:
+         - You also need to specify the port number in the URL: `http://<your_instance_IP>:3000/?userid=<some_user_id>&n=1`.
+	     - You also need to open port 3000 on your Google Compute Engine instance for tcp.
    - Open the chat here:
    
       <img src = "Readme_images/open_chat.PNG" width = "250" title="Open chat.">
