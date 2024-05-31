@@ -64,10 +64,11 @@ To run this project on a Google Compute Engine, I followed these steps:
 ### Starting your chatbot on the Google Compute Engine instance
 
    - Navigate to your project folder on the Compute Engine instance (e.g., `cd rasa_example_project`).
+   - If your containers are still running and you want to apply changes you made to the containers, run `docker-compose down --volumes` first to stop the containers.
    - Start your project with `docker-compose up --build` from inside the project folder.
    - You can check if all your containers are running on your Google Compute Engine instance via `docker container ls`.
    - You can access the frontend from your browser via `http://<your_instance_IP>/?userid=<some_user_id>&n=1`.
-      - For example, if your instance's IP is 233.23.33.22, you can use the URL `http://233.23.33.22/?userid=Bob22&n=1`.
+      - For example, if your instance's IP is 233.23.33.22 and the `userid` you want to use is Bob22, you can use the URL `http://233.23.33.22/?userid=Bob22&n=1`.
       - `n` determines which session is started (1-5). Earlier sessions need to be completed by a user to be able to access later ones.
 	  - This project uses Nginx. If you do NOT use Nginx:
          - You also need to specify the port number in the URL: `http://<your_instance_IP>:3000/?userid=<some_user_id>&n=1`.
